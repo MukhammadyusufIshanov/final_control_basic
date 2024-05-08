@@ -1,8 +1,11 @@
-﻿int n=3;
+﻿Console.Write("input number of items: ");
+int n = Convert.ToInt32(Console.ReadLine());
 string[] orig= new string[n];
-orig[0]="big";
-orig[1]="123";
-orig[2]="biggie";
+for (int i = 0; i < n; i++)
+{
+    Console.Write($"input item {i+1}: ");
+    orig[i]=Console.ReadLine()!;
+}
 
 string[] MakeNew(string[] s)
 {
@@ -17,15 +20,25 @@ string[] MakeNew(string[] s)
             j+=1;
         }
     }
-    return s2;
+    string[] s3=new string[j];
+    for (int i = 0; i < j; i++)
+    {
+        s3[i]=s2[i];
+    }
+    return s3;
 }
 
 void PrintMas(string[] col)
 {
     foreach (var item in col)
     {
-        Console.WriteLine(item);
+        Console.Write($"{item} ");
     }
 }
-
- PrintMas(MakeNew(orig));
+Console.WriteLine("");
+Console.WriteLine("from this:");
+PrintMas(orig);
+Console.WriteLine("");
+Console.WriteLine("");
+Console.WriteLine("we get this:");
+PrintMas(MakeNew(orig));
